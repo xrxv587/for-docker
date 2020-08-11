@@ -10,3 +10,6 @@ RUN cd /server\
     && npm install
 
 WORKDIR /server/
+
+EXPOSE 8888
+CMD ["node", "index.js"]
