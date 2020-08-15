@@ -1,7 +1,9 @@
 const redis = require('redis');
 const { promisify } = require('util');
+const config = require('../config');
 
 const redisClient = redis.createClient({
+	host: config.redisIp,
 	db: 12
 });
 const asyncGet = promisify(redisClient.get).bind(redisClient);
