@@ -2,6 +2,12 @@ const app = require('express')();
 const fs = require('fs');
 const redisClient = require('./redis');
 
+app.get('*', (req, res, next) => {
+	if (req.url !== '/favicon.ico') {
+		console.log('接收到请求' + req.url);
+	}
+	next();
+});
 app.get('/', (req, res) => {
 	const html = fs.readFileSync('./index.html', 'utf-8');
 	res.send(html);
