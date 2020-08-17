@@ -4,7 +4,7 @@ const redisClient = require('./redis');
 
 app.get('*', (req, res, next) => {
 	if (req.url !== '/favicon.ico') {
-		console.log('接收到请求' + req.url);
+		console.log('接收到请求===>' + req.url);
 	}
 	next();
 });
