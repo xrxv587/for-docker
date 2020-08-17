@@ -1,6 +1,6 @@
 const redis = require('redis');
 const { promisify } = require('util');
-const config = require('../config');
+const config = require('../config/config');
 
 const redisClient = redis.createClient({
 	host: config.redisIp,
