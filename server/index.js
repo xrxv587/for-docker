@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 app.get('/set', async (req, res) => {
 	try {
-		let r = await redisClient.testSet('test', {a: 1});
+		let r = await redisClient.testSet('test', JSON.stringify({a: 1}));
 		res.send(r);	
 	} catch (error) {
 		res.status(500).send(error.message);
