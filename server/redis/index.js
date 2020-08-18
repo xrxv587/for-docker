@@ -13,5 +13,9 @@ const testSet = async (key, val) => {
 	let res = await asyncSet(key, val);
 	return res;
 }
+const testGet = async (key, val) => {
+	let res = await asyncGet(key);
+	return res;
+}
 
-module.exports = { testSet };
+module.exports = { testSet, testGet };
