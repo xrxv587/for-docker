@@ -6,7 +6,11 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: '/personal',
-		component: () => import('../views/personal/Personal'),
+		component: () => import('../views/personal/Personal')
+	},
+	{
+		path: '/login',
+		component: () => import('../views/login/Login')
 	},
 	{
 		path: '/',
