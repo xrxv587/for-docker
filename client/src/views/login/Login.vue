@@ -3,18 +3,40 @@
 		<div class="login-panel">
 			<el-form inline label-position="left">
 				<el-form-item>
-					<el-input placeholder="input account"></el-input>
+					<el-input placeholder="input account" v-model="account"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-input type="password" placeholder="input password"></el-input>
+					<el-input type="password" placeholder="input password" v-model="password"></el-input>
 				</el-form-item>
 				<div class="submit">
-					<el-button type="primary">进 入</el-button>
+					<el-button type="primary" @click="login">进 入</el-button>
 				</div>
 			</el-form>
 		</div>
 	</div>
 </template>
+<script>
+import http from '../../assets/http';
+
+export default {
+	data() {
+		return {
+			account: '',
+			password: ''
+		}
+	},
+	methods: {
+		login() {
+			http.post('/user/login', {
+				account: this.account,
+				password: this.password
+			}).then(d => {
+				console.log(d);
+			});
+		}
+	}
+}
+</script>
 <style scoped lang="less">
 	.login {
 		width: 100%;
