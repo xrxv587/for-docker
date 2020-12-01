@@ -11,12 +11,14 @@ const whiteList = require('./config/whiteList');
 
 const app = express();
 app.use(session({
+	name: 'session',
 	secret: 'xrx',
 	resave: false,
 	saveUninitialized: false,
 	cookie: { 
 		secure: false,
-		maxAge: 60000
+		maxAge: 60000,
+		httpOnly: false
 	},
 	store: new RedisStore({
 			client: redis.createClient({
@@ -35,13 +37,6 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/dist'));
 
 app.use('/user', require('./routes/login'));
-
-app.get('*', (req, res, next) => {
-	if (req.url !== '/favicon.ico') {
-		console.log('接收到请求===>' + req.url);
-	}
-	next();
-});
 
 app.get('/', (req, res) => {
 	const html = fs.readFileSync('./dist/index.html', 'utf-8');

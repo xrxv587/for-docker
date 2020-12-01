@@ -31,7 +31,7 @@ export default {
 				account: this.account,
 				password: this.password
 			}).then(d => {
-				console.log(d);
+				this.$router.replace('/');
 			});
 		}
 	}
