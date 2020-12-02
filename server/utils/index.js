@@ -7,6 +7,7 @@ const authUser = (whiteList) => {
 		const suffix = temp[temp.length - 1];
 		const isStaticfile = suffix === 'js' || suffix === 'css' || suffix === 'html';
 		if (whiteList && whiteList.includes(req.url) || req.session.user || isStaticfile) {
+			if (req.session.user) req.session.touch();
 			next();
 		} else {
 			res.status(401).send('未登录');

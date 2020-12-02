@@ -14,12 +14,15 @@
 </div>
 </template>
 <script>
+import http from '../../assets/http';
     export default {
-        mounted() {
-            // setTimeout(() => {
-            //     this.$router.replace('/personal');
-            // }, 3000);
-        }
+        // methods: {
+		// 	roll() {
+		// 		http.get('/user/roll').then(d => {
+		// 			console.log(d)
+		// 		})
+		// 	}
+		// }
     }
 </script>
 <style scoped>

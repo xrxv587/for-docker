@@ -34,12 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(utils.authUser(whiteList));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const staticOptions = {
-	lastModified: true,
-	etag: true,
-	cacheControl: true
-}
-app.use(express.static(__dirname + '/dist', { ...staticOptions }));
+app.use(express.static(__dirname + '/dist'));
 
 app.use('/user', require('./routes/login'));
 
