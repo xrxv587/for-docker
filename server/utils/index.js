@@ -3,10 +3,13 @@ const crypto = require('crypto');
 const md5Sign = (data) => crypto.createHash('md5').update(data).digest('hex');
 const authUser = (whiteList) => {
 	return (req, res, next) => {
-		if (whiteList && whiteList.includes(req.url) || req.session.user) {
+		const temp = req.path.split('.');
+		const suffix = temp[temp.length - 1];
+		const isStaticfile = suffix === 'js' || suffix === 'css' || suffix === 'html';
+		if (whiteList && whiteList.includes(req.url) || req.session.user || isStaticfile) {
 			next();
 		} else {
-			res.status(401).send('未登录');
+			res.redirect(401).send('未登录');
 		}
 	}
 }
