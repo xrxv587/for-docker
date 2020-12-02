@@ -9,7 +9,7 @@ const authUser = (whiteList) => {
 		if (whiteList && whiteList.includes(req.url) || req.session.user || isStaticfile) {
 			next();
 		} else {
-			res.redirect(401).send('未登录');
+			res.status(401).send('未登录');
 		}
 	}
 }
